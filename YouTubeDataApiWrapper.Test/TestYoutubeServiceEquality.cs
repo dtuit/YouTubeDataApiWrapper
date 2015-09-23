@@ -1,13 +1,10 @@
-﻿using System;
-using Google.Apis.Auth.OAuth2;
+﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Bson;
-using YouTubeDataRetrievalWrapper.Util;
 using YouTubeDataRetrievalWrapper.Util.GoogleApiExtensions;
 
 namespace YouTubeDataRetrievalWrapperTesting
