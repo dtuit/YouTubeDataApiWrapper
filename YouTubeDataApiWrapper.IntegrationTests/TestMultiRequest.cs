@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace YouTubeDataApiWrapper.Test
+namespace YouTubeDataApiWrapper.IntegrationTests
 {
-    //TODO: 
     [TestClass]
     public class TestMultiRequest
     {

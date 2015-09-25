@@ -1,40 +1,40 @@
-﻿using System;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Google.Apis.Requests;
-using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 
-namespace YouTubeDataRetrievalWrapper.RequestBuilders
+namespace YouTubeDataApiWrapper.RequestBuilders
 {
+    //TODO: create annotation to mark propertys that are to be used.
     public abstract class BaseListRequestBuilder<TRequest, TResponse> 
         where TRequest : YouTubeBaseServiceRequest<TResponse>
         where TResponse : IDirectResponseSchema
     {
+        /// <summary>
+        /// Creates a new instance of TRequest and intializes parameters acording propertys of this
+        /// </summary>
+        /// <returns></returns>
         public abstract TRequest CreateRequest();
-        public abstract Task<TResponse> GetRequestTask();
 
-
-        public virtual Task<TResponse> GetRequestTaskWithReflection()
+        public virtual Task<TResponse> GetRequestTask()
         {
-            var req = this.CreateRequestWithReflection();
+            var req = this.CreateRequest();
             return req.ExecuteAsync();
         }
 
-        // Probably a bad idea
+        /// Probably a bad idea
         /// <summary>
         /// Creates a new instance of <typeparamref name="TRequest"/> using reflection and instatiates the propertys as per (this) BaseListRequest propertys
         /// </summary>
         /// <returns></returns>
-        public virtual TRequest CreateRequestWithReflection()
-        {
-            var constructorInfo = typeof(TRequest).GetConstructor(new[] { typeof(IClientService), typeof(string) });
-            if (constructorInfo == null) return null; // null not ideal
-
-            var request = (TRequest)constructorInfo.Invoke(new object[] {this.YouTubeService, this.Part});
-            MapRequestValues(request);
-            return request;
-        }
+        //public virtual TRequest CreateRequest2()
+        //{
+        //    var constructors = typeof(TRequest).GetConstructors();
+        //    var constructorInfo = typeof(TRequest).GetConstructor(new[] { typeof(IClientService), typeof(string)});
+        //    if (constructorInfo == null) return null;   // null not ideal
+        //    var request = (TRequest)constructorInfo.Invoke(new object[] {this.YouTubeService, this.Part});
+        //    MapRequestValues(request);
+        //    return request;
+        //}
 
         /// <summary>
         /// Map the propertys of ListRequestBuilder to TRequest using reflection

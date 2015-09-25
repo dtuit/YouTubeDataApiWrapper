@@ -1,10 +1,8 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
-namespace YouTubeDataRetrievalWrapper.Util
+namespace YouTubeDataApiWrapper.Util
 {
     public class PageTokenGenerator
     {

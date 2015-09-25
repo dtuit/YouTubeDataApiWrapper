@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Apis.Requests;
 using Google.Apis.Services;
-using YouTubeDataRetrievalWrapper.Util.GoogleApiExtensions;
+using YouTubeDataApiWrapper.Util.GoogleApiExtensions;
 
-namespace YouTubeDataRetrievalWrapper.RequestServices
+namespace YouTubeDataApiWrapper.RequestServices
 {
 
     public class MultiBatchRequest

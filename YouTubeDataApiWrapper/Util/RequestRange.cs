@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YouTubeDataRetrievalWrapper.RequestServices;
 
-namespace YouTubeDataRetrievalWrapper.Util
+namespace YouTubeDataApiWrapper.Util
 {
     public class RequestRange
     {

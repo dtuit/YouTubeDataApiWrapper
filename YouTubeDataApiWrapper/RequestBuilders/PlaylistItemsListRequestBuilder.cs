@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
-using Google.Apis.YouTube.v3;
+﻿using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
-namespace YouTubeDataRetrievalWrapper.RequestBuilders
+namespace YouTubeDataApiWrapper.RequestBuilders
 {
     public class PlaylistItemsListRequestBuilder : BaseListRequestBuilder<PlaylistItemsResource.ListRequest, PlaylistItemListResponse>
     {
@@ -15,24 +14,29 @@ namespace YouTubeDataRetrievalWrapper.RequestBuilders
 
         public override PlaylistItemsResource.ListRequest CreateRequest()
         {
-            var req = new PlaylistItemsResource.ListRequest(YouTubeService, Part)
-            {
-                Id = Id,
-                OnBehalfOfContentOwner = OnBehalfOfContentOwner,
-                PlaylistId = PlaylistId,
-                VideoId = VideoId,
-                MaxResults = MaxResults,
-                PageToken = PageToken,
-                Fields = Fields
-            };
-            return req;
+            var req = new PlaylistItemsResource.ListRequest(YouTubeService, Part);
+            return MapRequestValues(req);
         }
+        //public override PlaylistItemsResource.ListRequest CreateRequest()
+        //{
+        //    var req = new PlaylistItemsResource.ListRequest(YouTubeService, Part)
+        //    {
+        //        Id = Id,
+        //        OnBehalfOfContentOwner = OnBehalfOfContentOwner,
+        //        PlaylistId = PlaylistId,
+        //        VideoId = VideoId,
+        //        MaxResults = MaxResults,
+        //        PageToken = PageToken,
+        //        Fields = Fields
+        //    };
+        //    return req;
+        //}
 
-        public override Task<PlaylistItemListResponse> GetRequestTask()
-        {
-            var req = CreateRequest();
-            return req.ExecuteAsync();
-        }
+        //public override Task<PlaylistItemListResponse> GetRequestTask()
+        //{
+        //    var req = CreateRequest();
+        //    return req.ExecuteAsync();
+        //}
     }
 
 }

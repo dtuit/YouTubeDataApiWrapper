@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using YouTubeDataRetrievalWrapper.Util;
+using YouTubeDataApiWrapper.Util;
 
-namespace YouTubeDataRetrievalWrapperTesting
+namespace YouTubeDataApiWrapper.Test
 {
     [TestClass]
     public class TestPageTokenRequestRange

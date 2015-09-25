@@ -5,9 +5,9 @@ using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using YouTubeDataRetrievalWrapper.Util.GoogleApiExtensions;
+using YouTubeDataApiWrapper.Util.GoogleApiExtensions;
 
-namespace YouTubeDataRetrievalWrapperTesting
+namespace YouTubeDataApiWrapper.Test
 {
     [TestClass]
     public class TestYoutubeServiceEquality

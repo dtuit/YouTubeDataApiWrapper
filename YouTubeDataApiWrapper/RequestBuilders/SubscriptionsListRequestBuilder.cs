@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
-using Google.Apis.YouTube.v3;
+﻿using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
-namespace YouTubeDataRetrievalWrapper.RequestBuilders
+namespace YouTubeDataApiWrapper.RequestBuilders
 {
     public class SubscriptionsListRequestBuilder : BaseListRequestBuilder<SubscriptionsResource.ListRequest, SubscriptionListResponse>
     {
@@ -21,28 +20,34 @@ namespace YouTubeDataRetrievalWrapper.RequestBuilders
         public string OnBehalfOfContentOwnerChannel { get; set; }
         public SubscriptionsResource.ListRequest.OrderEnum Order { get; set; }
 
-        public override SubscriptionsResource.ListRequest CreateRequest() {
-            var req = new SubscriptionsResource.ListRequest(YouTubeService, Part)
-            {   
-                ChannelId = ChannelId,
-                ForChannelId = ForChannelId,
-                Id = Id,
-                MaxResults = MaxResults,
-                Mine = Mine,
-                MySubscribers = MySubscribers,
-                OnBehalfOfContentOwner = OnBehalfOfContentOwner,
-                OnBehalfOfContentOwnerChannel = OnBehalfOfContentOwnerChannel,
-                Order = Order,
-                PageToken = PageToken,
-                Fields = Fields
-            };
-            return req;
-        }
 
-        public override Task<SubscriptionListResponse> GetRequestTask()
+        public override SubscriptionsResource.ListRequest CreateRequest()
         {
-            var req = CreateRequest();
-            return req.ExecuteAsync();
+            var req = new SubscriptionsResource.ListRequest(YouTubeService, Part);
+            return MapRequestValues(req);
         }
+        //public override SubscriptionsResource.ListRequest CreateRequest() {
+        //    var req = new SubscriptionsResource.ListRequest(YouTubeService, Part)
+        //    {   
+        //        ChannelId = ChannelId,
+        //        ForChannelId = ForChannelId,
+        //        Id = Id,
+        //        MaxResults = MaxResults,
+        //        Mine = Mine,
+        //        MySubscribers = MySubscribers,
+        //        OnBehalfOfContentOwner = OnBehalfOfContentOwner,
+        //        OnBehalfOfContentOwnerChannel = OnBehalfOfContentOwnerChannel,
+        //        Order = Order,
+        //        PageToken = PageToken,
+        //        Fields = Fields
+        //    };
+        //    return req;
+        //}
+
+        //public override Task<SubscriptionListResponse> GetRequestTask()
+        //{
+        //    var req = CreateRequest();
+        //    return req.ExecuteAsync();
+        //}
     }
 }

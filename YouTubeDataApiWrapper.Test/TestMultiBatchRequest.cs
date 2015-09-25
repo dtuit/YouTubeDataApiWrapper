@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace YouTubeDataRetrievalWrapperTesting
+namespace YouTubeDataApiWrapper.Test
 {
     //TODO:
     [TestClass]

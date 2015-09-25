@@ -9,11 +9,12 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Requests;
 using Google.Apis.Services;
+using Google.Apis.Util;
 
 //TODO: Add timeout to each request and have exponetial backoff retry, may need be implemented in the request.service
 //TODO: Retry for specific server errors;
 
-namespace YouTubeDataRetrievalWrapper.RequestServices
+namespace YouTubeDataApiWrapper.RequestServices
 {
     /// <summary>
     /// A Multi Request executes multiple indiviual requests concurrently asyncronously to Google Servers .
@@ -33,7 +34,7 @@ namespace YouTubeDataRetrievalWrapper.RequestServices
     /// Addtionally there is no guarantee of the order in which the requests will return, <see cref="OnResponse{TResponse}"/> has parameter index, which indicates the order requests where queued.
     /// </remarks>
     /// 
-    /// </summary>
+    /// </summary>  
     public class MultiRequest
     {
 
@@ -67,10 +68,10 @@ namespace YouTubeDataRetrievalWrapper.RequestServices
         }
 
         /// <summary>
-        /// For all the requests services that require Auth refreshes their TokenResponseObject.
+        /// For all the requests services that require Auth if the token is expired refreshes their TokenResponse Object.
         /// <remarks>
-        /// If this is not called prior to execution of the MultiRequest the service may refresh the token for all requests, effectivly doubling the number of HttpRequests made.
-        /// Setting <see cref="RequiresAuth"/> to true will cause this method to be called on execution.s
+        /// If this is not called prior to execution of the MultiRequest the service may refresh the token on every requests, effectivly doubling the number of HttpRequests made.
+        /// Setting <see cref="RequiresAuth"/> to true will cause this method to be called on execution.
         /// </remarks>
         /// </summary>
         /// <returns></returns>
@@ -82,7 +83,8 @@ namespace YouTubeDataRetrievalWrapper.RequestServices
                     var userCred in
                         _services.Select(clientService => (UserCredential) clientService.HttpClientInitializer))
                 {
-                    await userCred.RefreshTokenAsync(CancellationToken.None);
+                    if(userCred != null && userCred.Token.IsExpired(SystemClock.Default))
+                        await userCred.RefreshTokenAsync(CancellationToken.None);
                 }
             }
             catch (InvalidCastException) //A service doesnt have a userCredential so is not a autheticated request.
@@ -153,6 +155,7 @@ namespace YouTubeDataRetrievalWrapper.RequestServices
 
         /// <summary>
         /// A concrete type callback for an individual response
+        /// User needs to ensure that their usage is thread safe.
         /// </summary>
         /// <typeparam name="TResponse">The response type.</typeparam>
         /// <param name="content">The content response or <c>null</c> if the response failed</param>

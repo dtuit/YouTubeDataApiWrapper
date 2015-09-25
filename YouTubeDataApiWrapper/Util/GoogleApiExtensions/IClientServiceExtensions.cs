@@ -2,7 +2,7 @@
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 
-namespace YouTubeDataRetrievalWrapper.Util.GoogleApiExtensions
+namespace YouTubeDataApiWrapper.Util.GoogleApiExtensions
 {
     public static class IClientServiceExtensions
     {

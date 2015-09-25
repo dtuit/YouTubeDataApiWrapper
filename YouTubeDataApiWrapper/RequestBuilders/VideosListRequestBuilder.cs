@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
-using Google.Apis.YouTube.v3;
+﻿using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 
-namespace YouTubeDataRetrievalWrapper.RequestBuilders
+namespace YouTubeDataApiWrapper.RequestBuilders
 {
     public class VideosListRequestBuilder : BaseListRequestBuilder<VideosResource.ListRequest, VideoListResponse>
     {
@@ -17,18 +16,11 @@ namespace YouTubeDataRetrievalWrapper.RequestBuilders
         public string RegionCode { get; set; }
         public string VideoCategoryId { get; set; }
         //public long? DebugProjectIdOverride { get; set; }
-        
+
         public override VideosResource.ListRequest CreateRequest()
         {
             var req = new VideosResource.ListRequest(YouTubeService, Part);
-            MapRequestValues(req);
-            return req;
-        }
-
-        public override Task<VideoListResponse> GetRequestTask()
-        {
-            var req = CreateRequest();
-            return req.ExecuteAsync();
+            return MapRequestValues(req);
         }
     }
 }

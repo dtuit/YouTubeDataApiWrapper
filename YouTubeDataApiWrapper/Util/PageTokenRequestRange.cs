@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace YouTubeDataRetrievalWrapper.Util
+namespace YouTubeDataApiWrapper.Util
 {
    /// <summary>
    /// Provides a enumerable of <see cref="PageTokenObject"/> based on parameters discribing how many items to get.

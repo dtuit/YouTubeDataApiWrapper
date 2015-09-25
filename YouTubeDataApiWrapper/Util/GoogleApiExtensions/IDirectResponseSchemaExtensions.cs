@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Google.Apis.Requests;
 using Google.Apis.YouTube.v3.Data;
 
-namespace YouTubeDataRetrievalWrapper.Util.GoogleApiExtensions
+namespace YouTubeDataApiWrapper.Util.GoogleApiExtensions
 {
     public static class IDirectResponseSchemaExtensions
     {
