@@ -5,7 +5,7 @@ A small C# libary that wraps the [Google.Apis.YouTube](https://developers.google
 - Extract large amounts of API data in a short period of time.
 
 #### Installation
-nuget : 
+nuget : https://www.nuget.org/packages/YouTubeDataApiWrapper/
 
 For optimal usage the maximum number of connections must be raised by adding the following to the `app.config`
 ```xml
